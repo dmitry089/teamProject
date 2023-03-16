@@ -15,4 +15,5 @@ public class GameStoreTest {
     }
 
     // другие ваши тесты
+    //не забыть про сборку
 }
