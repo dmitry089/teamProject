@@ -81,7 +81,7 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
-    @Test
+    @Test  // Вывод игры, в которую играют большее количество времени
     public void shouldMostPlayerByGenre(){
         Player player = new Player("Petya");
 
