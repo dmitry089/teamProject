@@ -38,11 +38,44 @@ public class GameStoreTest {
     @Test
     public void shouldAddOneHourPlayTime() {       //проверка добавления времени в игре на 1 час
 
-        store.addPlayTime("game", 1);
-        String expected = "game";
+        store.addPlayTime("Counter strike", 1);
+        String expected = "Counter strike";
         String actual = store.getMostPlayer();
 
         Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldNotShowAnyPlayer() { //  проверка метода getMostPlayer, если игроки отсутствуют
+
+        assertNull(store.getMostPlayer());
+    }
+
+    @Test
+    public void shouldNotAddHoursIfZero() { // проверка добавления времени игры ноль часов
+
+        store.addPlayTime("Far cry", 0);
+
+        assertNull(store.getMostPlayer());
+    }
+
+    @Test
+    public void shouldNotAddHoursIfMinus() { // проверка добавления времени с отрицательным значением
+
+        store.addPlayTime("Far cry", -1);
+
+        assertNull(store.getMostPlayer());
+    }
+
+    @Test
+    public void shouldCheckThatTheGameInTheStore() {    //проверка
+        Game game1 = store.publishGame("Sims", "симулятор");
+        Game game2 = store.publishGame("Battlefield", "Шутер");
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            store.publishGame("Sims", "симулятор");
+        });
 
     }
 }
