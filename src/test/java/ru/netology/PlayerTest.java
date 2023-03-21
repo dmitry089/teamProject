@@ -34,9 +34,9 @@ public class PlayerTest {
         player.installGame(game);
         player.installGame(game1);
         player.play(game, 5);
-        player.play(game1, 1);
+        player.play(game1, 0);
 
-        int expected = 6;
+        int expected = 5;
         int actual = player.sumGenre(game.getGenre());
         assertEquals(expected, actual);
     }
@@ -85,18 +85,18 @@ public class PlayerTest {
     public void shouldMostPlayerByGenre(){
         Player player = new Player("Petya");
 
-        player.installGame(game1);
         player.installGame(game2);
         player.installGame(game5);
         player.installGame(game6);
+        player.installGame(game8);
 
-        player.play(game1, 2);
-        player.play(game2, 5);
-        player.play(game5, 3);
-        player.play(game6, 6);
+        player.play(game2, 2);
+        player.play(game5, 5);
+        player.play(game6, 3);
+        player.play(game8, 6);
 
-        Game expected = game6;
-        Game actual = player.mostPlayerByGenre("Call of Duty");
+        Game expected = game8; 
+        Game actual = player.mostPlayerByGenre("Шутер");
         assertEquals(expected, actual);
     }
 }
