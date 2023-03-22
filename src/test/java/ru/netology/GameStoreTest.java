@@ -87,4 +87,15 @@ public class GameStoreTest {
         int actual = store.getSumPlayedTime();
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void shouldRecordTheTimeThatPlayerSpentInTheGame() {
+        GameStore store = new GameStore();
+        Game game1 = store.publishGame("Sims", "симулятор");
+        store.addPlayTime("Dmitry", 4);
+        store.addPlayTime("Lidiya", 5);
+
+        int expected = 11;
+        int actual = store.addPlayTime("Lena", 2);
+        Assertions.assertEquals(expected, actual);
+    }
 }
