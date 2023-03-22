@@ -36,13 +36,22 @@ public class Player {
      * возвращает суммарное количество часов, проигранное в эту игру.
      * если игра не была установлена, то надо выкидывать RuntimeException
      */
+<<<<<<< HEAD
     public int play(Game game, int hours) {
         game.getStore().addPlayTime(name, hours);
         if (playedTime.containsKey(game)) {
             playedTime.put(game, playedTime.get(game));
         } else {
             playedTime.put(game, hours);
+=======
+    public int play(Game game, int hours) throws RuntimeException {
+        if (!playedTime.containsKey(game)) {
+            throw new RuntimeException
+                    ("The game " + game.getTitle() + " is not installed by player " + this.name);
+>>>>>>> player
         }
+        playedTime.put(game, playedTime.get(game) + hours);
+        game.getStore().addPlayTime(name, hours);
         return playedTime.get(game);
     }
 
@@ -51,12 +60,11 @@ public class Player {
      * суммирует время, проигранное во все игры этого жанра этим игроком
      */
     public int sumGenre(String genre) {
-        int sum = 0;
+        int sum = 0; 
         for (Game game : playedTime.keySet()) {
             if (game.getGenre().equals(genre)) {
                 sum += playedTime.get(game);
-            } else {
-                sum = 0;
+                //убрал else чтобы счетчик не обнулялся
             }
         }
         return sum;
@@ -67,6 +75,17 @@ public class Player {
      * Если в игры этого жанра не играли, возвращается null
      */
     public Game mostPlayerByGenre(String genre) {
-        return null;
+        int mostTime = 0;
+        Game mostGenre = null;
+        for (Game game : playedTime.keySet()) {
+            if (game.getGenre().equals(genre)) {
+                int gameTime = playedTime.get(game);
+                if (gameTime > mostTime) {
+                    mostTime = gameTime;
+                    mostGenre = game;
+                }
+            }
+        }
+        return mostGenre;
     }
 }

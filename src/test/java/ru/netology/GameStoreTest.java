@@ -16,6 +16,7 @@ public class GameStoreTest {
         assertTrue(store.containsGame(game));
     }
 
+<<<<<<< HEAD
     @Test
     public void shouldAddTwoGames() {       //добавление двух игр
 
@@ -96,3 +97,7 @@ public class GameStoreTest {
         Assertions.assertEquals("Lena", actual);
     }
 }
+=======
+    // другие ваши тесты/
+}
+>>>>>>> player
