@@ -64,7 +64,6 @@ public class GameStoreTest {
     public void shouldNotAddHoursIfMinus() { // проверка добавления времени с отрицательным значением
 
         store.addPlayTime("Far cry", -1);
-
         assertNull(store.getMostPlayer());
     }
 
@@ -76,6 +75,5 @@ public class GameStoreTest {
         Assertions.assertThrows(RuntimeException.class, () -> {
             store.publishGame("Sims", "симулятор");
         });
-
     }
 }
