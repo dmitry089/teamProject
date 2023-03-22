@@ -76,4 +76,15 @@ public class GameStoreTest {
             store.publishGame("Sims", "симулятор");
         });
     }
+    @Test
+    public void mustSumUpTheTotalAmountOfTimeOfAllPlayers() {
+
+        store.addPlayTime("Dmitry", 2);
+        store.addPlayTime("Lidiya", 5);
+        store.addPlayTime("Lena", 4);
+
+        int expected = 11;
+        int actual = store.getSumPlayedTime();
+        Assertions.assertEquals(expected, actual);
+    }
 }
