@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class PlayerTest {
     GameStore store = new GameStore();
     Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-    Game game1 = store.publishGame("Hogwarts Legacy", "РПГ");
+    Game game1 = store.publishGame("Hogwarts Legacy", "Аркады");
     Game game2 = store.publishGame("SKYRIM", "РПГ");
     Game game3 = store.publishGame("GTA", "Шутер");
     Game game4 = store.publishGame("Assassin's Creed", "Приключения");
@@ -34,9 +34,9 @@ public class PlayerTest {
         player.installGame(game);
         player.installGame(game1);
         player.play(game, 5);
-        player.play(game1, 0);
+        player.play(game1, 1);
 
-        int expected = 5;
+        int expected = 6;
         int actual = player.sumGenre(game.getGenre());
         assertEquals(expected, actual);
     }
