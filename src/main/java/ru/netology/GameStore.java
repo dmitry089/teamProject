@@ -19,9 +19,14 @@ public class GameStore {
      * Создание объекта игры с заданными заголовком и жанром
      * Каждый объект игры помнит объект каталога, которому она принадлежит
      */
-    public Game publishGame(String title, String genre) {
+    public Game publishGame(String title, String genre) throws RuntimeException {
         Game game = new Game(title, genre, this);
-        games.add(game);
+        if (containsGame(game)) {
+            throw new RuntimeException
+                    ("The game " + game.getTitle() + " has already been added ");
+        } else {
+            games.add(game);
+        }
         return game;
     }
 
