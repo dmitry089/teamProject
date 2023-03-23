@@ -87,6 +87,7 @@ public class GameStoreTest {
         int actual = store.getSumPlayedTime();
         Assertions.assertEquals(expected, actual);
     }
+    
     @Test
     public void shouldRecordTheTimeThatPlayerSpentInTheGame() {
         store.addPlayTime("Lena", 4);
