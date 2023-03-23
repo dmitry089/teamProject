@@ -46,8 +46,8 @@ public class PlayerTest {
     public void shouldSumGenreNullGames() {
         Player player = new Player("Petya");
 
-        assertThrows(RuntimeException.class, ()->{
-            player.play(game1,5);
+        assertThrows(RuntimeException.class, () -> {
+            player.play(game1, 5);
         });
     }
 
@@ -83,7 +83,7 @@ public class PlayerTest {
     }
 
     @Test  // Вывод игры, в которую играют большее количество времени
-    public void shouldMostPlayerByGenre(){
+    public void shouldMostPlayerByGenre() {
         Player player = new Player("Petya");
 
         player.installGame(game2);
@@ -96,7 +96,7 @@ public class PlayerTest {
         player.play(game6, 3);
         player.play(game8, 6);
 
-        Game expected = game8; 
+        Game expected = game8;
         Game actual = player.mostPlayerByGenre("Шутер");
         assertEquals(expected, actual);
     }
