@@ -76,7 +76,7 @@ public class GameStoreTest {
             store.publishGame("Sims", "симулятор");
         });
     }
-    
+
     @Test
     public void mustSumUpTheTotalAmountOfTimeOfAllPlayers() {
 
